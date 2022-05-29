@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // styles
 const CopyRightStyle = styled.div({
-  fontFamily: "var(--open-sans)",
+  fontFamily: "var(--poppins)",
   color: "var(--copy-light)",
   "@media(min-width:768px)": {
     textAlign: "center",

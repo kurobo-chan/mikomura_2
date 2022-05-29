@@ -3,12 +3,13 @@ import SiteName from "./siteName";
 import Nav from "./nav";
 import DarkMode from "./dark-mode";
 import styled from "styled-components";
+import { GridLayout } from "./grid-layout";
 
 // styles
 const InnerContainer = styled.div({
   display: "grid",
   gap: "1em",
-  borderBlockEnd: "solid 1px var(--primary-light)",
+  borderBlockEnd: "solid 1px var(--border)",
   paddingBlockEnd: "1em",
 });
 const HeadContainer = styled.div({
@@ -19,7 +20,7 @@ const HeadContainer = styled.div({
 // markup
 const Header = () => {
   return (
-    <header className="container">
+    <GridLayout as={`header`} marginBlock={`0`}>
       <InnerContainer>
         <HeadContainer>
           <SiteName />
@@ -27,7 +28,7 @@ const Header = () => {
         </HeadContainer>
         <Nav />
       </InnerContainer>
-    </header>
+    </GridLayout>
   );
 };
 export default Header;

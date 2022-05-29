@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 // styles
 const Wrap = styled.div({
-  paddingBlock: "var(--size1)",
+	paddingBlock: "var(--size1)",
 });
 // markup
 const Layout = ({ children }) => {

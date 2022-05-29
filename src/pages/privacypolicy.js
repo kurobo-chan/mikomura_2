@@ -1,18 +1,21 @@
 import * as React from "react";
 import Layout from "../components/layout";
 import { graphql } from "gatsby";
-
-// styles
+import { PostTitle, PostStyle } from "../components/post-style";
+import { GridLayout } from "../components/grid-layout";
 
 // data
 export const query = graphql`
   query {
-    allFile(filter: { name: { eq: "privacypolicy" } }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { title: { eq: "privacy policy" } } }
+    ) {
       edges {
         node {
+          html
           id
-          childMarkdownRemark {
-            html
+          frontmatter {
+            title
           }
         }
       }
@@ -21,15 +24,22 @@ export const query = graphql`
 `;
 // markup
 const PrivacyPolicy = ({ data }) => {
+  const grid = data.allMarkdownRemark.edges;
   return (
     <Layout>
-      {data.allFile.edges.map((md) => (
-        <div
-          key={md.id}
-          dangerouslySetInnerHTML={{
-            __html: md.node.childMarkdownRemark.html,
-          }}
-        />
+      {grid.map(({ node }) => (
+        <GridLayout as={`main`}>
+          <PostTitle content={`"🐹"`}>
+            {node.frontmatter.title}
+          </PostTitle>
+          <PostStyle
+            key={node.id}
+            fontFamily={`var(--noto-sans-j-p)`}
+            dangerouslySetInnerHTML={{
+              __html: node.html,
+            }}
+          />
+        </GridLayout>
       ))}
     </Layout>
   );
