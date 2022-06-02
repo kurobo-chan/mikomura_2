@@ -122,5 +122,6 @@ module.exports = {
         queries: require("./src/utils/algolia-queries"),
       },
     },
+    `gatsby-plugin-netlify`,
   ],
 };

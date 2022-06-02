@@ -102,6 +102,16 @@ const GlobalStyle = createGlobalStyle({
     "--blog-actions": "var(--gray)",
     "--more-button": "var(--primary)",
     "--no-more-color": "var(--secondary)",
+    "--contact-input-bg": "var(--white)",
+    "--contact-input-text": "var(--black)",
+    "--contact-border": "var(--light-gray)",
+    "--contact-border-focus": "var(--primary)",
+    "--contact-placeholder": "var(--gray)",
+    "--contact-alert-bg": "var(--white)",
+    "--contact-alert-color": "var(--accent)",
+    "--contact-button": "var(--primary-secondary-gradients)",
+    "--contact-button-hover": "var(--gray)",
+    "--contact-button-text": "var(--white)",
   },
   "body.dark": {
     /* dark-mode */

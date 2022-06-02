@@ -110,7 +110,7 @@ const Blog = ({ data, location }) => {
           <PostTitle content={`"🖼️"`}>blog</PostTitle>
           <Actions>
             <SearchModal />
-            <ViewAllButton to={`/tag-list/`}>View all tags</ViewAllButton>
+            <ViewAllButton to={`/tags/`}>View all tags</ViewAllButton>
           </Actions>
         </TitleBlock>
         {list.map(({ node }) => (

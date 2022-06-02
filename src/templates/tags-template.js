@@ -101,7 +101,7 @@ const Tag = ({ data, location, pageContext }) => {
 
   return (
     <Layout>
-      <SEO pagetitle="タグ" pagedesc="タグ一覧" pagepath={location.pathname} />
+      <SEO pagetitle={tag} pagedesc={tag} pagepath={location.pathname} />
       <GridLayout as={`main`}>
         <TitleBlock>
           <PostTitle content={`"🪅"`}>{tag}</PostTitle>
