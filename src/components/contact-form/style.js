@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const FromUnit = styled.form({
+export const From = styled.form({
   width: "100%",
   display: "flex",
   justifyContent: "space-between",
@@ -51,13 +51,15 @@ export const Input = styled.input(
     width: "100%",
     background: "transparent",
     fontFamily: "var(--poppins)",
-    textTransform: "uppercase",
     color: "var(--contact-input-text)",
     outline: "none",
     border: "none",
     resize: "vertical",
     margin: "0",
     touchAction: "manipulation",
+    "::placeholder": {
+      textTransform: "uppercase",
+    },
   }),
   focus
 );

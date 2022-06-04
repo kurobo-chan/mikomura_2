@@ -3,7 +3,7 @@ import Layout from "../components/layout";
 import { PostTitle } from "../components/post-style";
 import { GridLayout } from "../components/grid-layout";
 import SEO from "../components/seo";
-import From from "../components/contact/form";
+import ContactFrom from "../components/contact-form/form";
 
 const Contact = ({ location }) => {
   return (
@@ -16,7 +16,7 @@ const Contact = ({ location }) => {
       <GridLayout as={`main`}>
         <PostTitle content={`"📧"`}>contact us</PostTitle>
         <div>
-          <From />
+          <ContactFrom />
         </div>
       </GridLayout>
     </Layout>

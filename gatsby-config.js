@@ -111,6 +111,8 @@ module.exports = {
           "GATSBY_ALGOLIA_APP_ID",
           "GATSBY_ALGOLIA_SEARCH_KEY",
           "ALGOLIA_ADMIN_KEY",
+          "GMAIL_ADDRESS",
+          "GMAIL_PASSWORD",
         ],
       },
     },
@@ -122,6 +124,5 @@ module.exports = {
         queries: require("./src/utils/algolia-queries"),
       },
     },
-    `gatsby-plugin-netlify`,
   ],
 };
