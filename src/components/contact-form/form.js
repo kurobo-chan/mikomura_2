@@ -12,15 +12,41 @@ import IconAlert from "../icons/icon-alert";
 import { useForm } from "react-hook-form";
 
 const ContactFrom = () => {
+  const [value, setValue] = React.useState({});
+  const [serverResponse, setServerResponse] = React.useState("");
+  const handleChange = (e) => {
+    value[e.target.id] = e.target.value;
+    setServerResponse("");
+    setValue({ ...value });
+  };
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const response = await window
+      .fetch("/api/form", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(value),
+      })
+      .then((res) => res.json());
+    setServerResponse(response);
+  };
   return (
     <React.Fragment>
-      <From name="contact" action="/api/form" method="POST" >
+      <p>{serverResponse}</p>
+      <From name="contact" action="/api/form" method="POST">
         <InputWrap>
-          <Input type="text" name="name" />
+          <Input type="text" name="name" required onSubmit={onSubmit} />
           <FocusInput></FocusInput>
         </InputWrap>
         <InputWrap>
-          <Input type="text" name="email" />
+          <Input
+            type="text"
+            name="email"
+            required
+            onChange={handleChange}
+          />
           <FocusInput></FocusInput>
         </InputWrap>
         <InputWrap width={`100%`}>
@@ -33,6 +59,8 @@ const ContactFrom = () => {
             fontSize={`1em`}
             lineHeight={`1.8`}
             overflow={`auto`}
+            required
+            onChange={handleChange}
           />
           <FocusInput></FocusInput>
         </InputWrap>
