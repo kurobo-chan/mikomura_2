@@ -1,28 +1,21 @@
-const formHandler = (req, res) => {
-  let nodemailer = require("nodemailer");
-  const transporter = nodemailer.createTransport({
+const nodemailer = require("nodemailer");
+export default function formHandler(req, res) {
+  let transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
       user: process.env.GMAIL_ADDRESS,
       pass: process.env.GMAIL_PASSWORD,
     },
-    secure: true,
   });
-
-  if (!req.body.email) {
-    return res.status(422).json("Email is required");
+  transporter.sendMail({
+    from: req.body.from,
+    to: req.body.to,
+    subject: req.body.subject || "[No subject]",
+    html: req.body.message || "[No message]",
+  });
+  if (!req.body.name) {
+    return res.status(422).json("Name field is required");
   }
 
-  const mailData = {
-    from: "TEST Sender <mail@example.com>",
-    to: req.body.email ? req.body.email : "",
-    subject: "Thanks for the inquiry!",
-    html: req.body.emailBody ? `<p>${req.body.emailBody}</p>` : "Null message.",
-  };
-
-  const results = transporter
-    .sendMail(mailData)
-    .then((result) => res.status(200).json(JSON.stringify(result)))
-    .catch((error) => res.status(500).json(JSON.stringify(error)));
-};
-export default formHandler;
+  return res.json(`OK`);
+}

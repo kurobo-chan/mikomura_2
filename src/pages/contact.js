@@ -15,9 +15,7 @@ const Contact = ({ location }) => {
       />
       <GridLayout as={`main`}>
         <PostTitle content={`"📧"`}>contact us</PostTitle>
-        <div>
-          <ContactFrom />
-        </div>
+        <ContactFrom />
       </GridLayout>
     </Layout>
   );
