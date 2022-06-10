@@ -1,4 +1,4 @@
-import { default as React, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import {
   InputWrap,
@@ -9,64 +9,30 @@ import {
   FocusInput,
 } from "./style";
 import IconAlert from "../icons/icon-alert";
-import { useForm } from "react-hook-form";
+import { ValidationError, useForm } from "@formspree/react";
 import axios from "axios";
 
 const ContactFrom = () => {
-  const [serverState, setServerState] = useState({
-    submitting: false,
-    status: null,
-  });
-  const handleServerResponse = (ok, msg, form) => {
-    setServerState({
-      submitting: false,
-      status: { ok, msg },
-    });
-    if (ok) {
-      form.reset();
-    }
-  };
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    setServerState({ submitting: true });
-    axios({
-      method: "post",
-      url: process.env.GETFORM_ENDPOINT,
-      data: new FormData(form),
-    })
-      .then((r) => {
-        handleServerResponse(true, "Thanks!", form);
-      })
-      .catch((r) => {
-        handleServerResponse(false, r.response.data.error, form);
-      });
-  };
+  const [state, handleSubmit] = useForm(`"${process.env.FORMSPREE_ENDPOINT}"`);
+  if (state.succeeded) {
+    return <div>Thank you for signing up!</div>;
+  }
   return (
     <React.Fragment>
-      <From
-        name="contact"
-        action="/api/form"
-        method="POST"
-        onSubmit={handleOnSubmit}
-      >
+      <From name="contact" method="POST" onSubmit={handleSubmit}>
         <InputWrap>
-          <Input
-            type="text"
-            name="name"
-            required="required"
-            placeholder="name"
-            aria-describedby="emailHelp"
-          />
+          <Input type="text" name="name" placeholder="name" required />
+          <ValidationError field="name" prefix="Name" errors={state.errors} />
           <FocusInput></FocusInput>
         </InputWrap>
         <InputWrap>
           <Input
             type="email"
             name="email"
-            required="required"
             placeholder="email address"
+            required
           />
+          <ValidationError field="email" prefix="Email" errors={state.errors} />
           <FocusInput></FocusInput>
         </InputWrap>
         <InputWrap width={`100%`}>
@@ -79,20 +45,20 @@ const ContactFrom = () => {
             fontSize={`1em`}
             lineHeight={`1.8`}
             overflow={`auto`}
-            required="required"
             placeholder="message"
+            required
+          />
+          <ValidationError
+            field="message"
+            prefix="Message"
+            errors={state.errors}
           />
           <FocusInput></FocusInput>
         </InputWrap>
         <SendBtnContainer>
-          <SendBtn type="submit" disabled={serverState.submitting}>
+          <SendBtn type="submit" disabled={state.submitting}>
             send
           </SendBtn>
-          {serverState.status && (
-            <p className={!serverState.status.ok ? "errorMsg" : ""}>
-              {serverState.status.msg}
-            </p>
-          )}
         </SendBtnContainer>
       </From>
     </React.Fragment>
