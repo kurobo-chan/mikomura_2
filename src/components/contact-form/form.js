@@ -82,7 +82,7 @@ const ContactFrom = () => {
             >
               <Input
                 type="text"
-                name="username"
+                name="name"
                 placeholder="name"
                 as={Field}
               />
