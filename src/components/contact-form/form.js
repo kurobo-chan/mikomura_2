@@ -17,7 +17,7 @@ const ContactFrom = () => {
   const [serverState, setServerState] = useState({});
 
   const formSchema = Yup.object().shape({
-    username: Yup.string()
+    name: Yup.string()
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("このフィールドは必須です"),
@@ -65,7 +65,7 @@ const ContactFrom = () => {
   });
   return (
     <Formik
-      initialValues={{ username: "", email: "", message: "" }}
+      initialValues={{ name: "", email: "", message: "" }}
       onSubmit={handleOnSubmit}
       validationSchema={formSchema}
     >
@@ -75,8 +75,8 @@ const ContactFrom = () => {
             <InputWrap
               css={{
                 border:
-                  errors.username &&
-                  touched.username &&
+                  errors.name &&
+                  touched.name &&
                   `2px solid var(--primary-light)`,
               }}
             >
@@ -87,7 +87,7 @@ const ContactFrom = () => {
                 as={Field}
               />
               <ErrorMessage
-                name="username"
+                name="name"
                 render={(msg) => (
                   <Errors>
                     {" "}
