@@ -15,10 +15,13 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@formspree/cli": "^0.9.6",
     "@formspree/react": "^2.2.5",
     "algoliasearch": "^4.13.1",
     "axios": "^0.27.2",
     "babel-plugin-styled-components": "^2.0.7",
+    "formik": "^2.2.9",
     "gatsby": "^4.13.1",
     "gatsby-cli": "^4.16.0",
     "gatsby-plugin-algolia": "^0.26.0",
@@ -40,14 +43,13 @@
     "gatsby-transformer-remark": "^5.13.0",
     "gatsby-transformer-sharp": "^4.13.0",
     "html-to-text": "^8.2.0",
-    "nodemailer": "^6.7.5",
     "prismjs": "^1.28.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "react-hook-form": "^7.31.3",
     "react-instantsearch-dom": "^6.26.0",
     "rehype-react": "^7.1.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "yup": "^0.32.11"
   }
 }

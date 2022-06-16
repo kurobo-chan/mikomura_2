@@ -111,7 +111,7 @@ module.exports = {
           "GATSBY_ALGOLIA_APP_ID",
           "GATSBY_ALGOLIA_SEARCH_KEY",
           "ALGOLIA_ADMIN_KEY",
-          "GETFORM_ENDPOINT",
+          "GATSBY_CONTACT_FORM",
         ],
       },
     },

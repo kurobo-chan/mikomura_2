@@ -1,19 +1,24 @@
 import styled, { css } from "styled-components";
 
-export const From = styled.form({
+export const FromBlock = styled.form({
   width: "100%",
-  display: "flex",
-  justifyContent: "space-between",
-  flexWrap: "wrap",
+  display: "grid",
   rowGap: "2em",
+  "@media(min-width: 768px)": {
+    display: "flex",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+  },
 });
 
 export const InputWrap = styled.div((props) => ({
-  width: props.width || "calc((100% - 20px) / 2)",
   position: "relative",
   background: "var(--contact-input-bg)",
   border: "1px solid var(--contact-border)",
   borderRadius: "2px",
+  "@media(min-width: 768px)": {
+    width: props.width || "calc((100% - 20px) / 2)",
+  },
 }));
 
 export const FocusInput = styled.span({
@@ -49,7 +54,6 @@ export const Input = styled.input(
     overflow: props.overflow || "visible",
     display: "block",
     width: "100%",
-    background: "transparent",
     fontFamily: "var(--poppins)",
     color: "var(--contact-input-text)",
     outline: "none",
